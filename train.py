@@ -7,7 +7,8 @@ from apex import amp
 import ujson as json
 from torch.utils.data import DataLoader
 from transformers import AutoConfig, AutoModel, AutoTokenizer
-from transformers.optimization import AdamW, get_linear_schedule_with_warmup
+from transformers.optimization import get_linear_schedule_with_warmup
+from bitsandbytes.optim import AdamW
 from model import DocREModel
 from utils import set_seed, collate_fn
 from prepro import read_docred

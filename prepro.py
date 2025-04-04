@@ -13,7 +13,7 @@ def chunks(l, n):
         res += [l[i:i + n]]
     return res
 
-
+# I should duplicate this func for own dataset
 def read_docred(file_in, tokenizer, max_seq_length=1024):
     i_line = 0
     pos_samples = 0
