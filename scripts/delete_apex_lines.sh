@@ -14,7 +14,7 @@ if [ ! -f "$FILE" ]; then
   exit 1
 fi
 
-# Delete lines 32 to 49 using sed (in-place edit)
-sed -i.bak '32,49d' "$FILE"
+# Delete lines 36 to 49 using sed (in-place edit)
+sed -i.bak '36,49d' "$FILE"
 
-echo "Deleted lines 32 to 49 from $FILE (backup saved as $FILE.bak)"
+echo "Deleted lines 36 to 49 from $FILE (backup saved as $FILE.bak)"
