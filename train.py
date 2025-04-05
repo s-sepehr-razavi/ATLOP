@@ -14,7 +14,7 @@ from utils import set_seed, collate_fn
 from prepro import read_docred
 from evaluation import to_official, official_evaluate
 import wandb
-os.environ["WANDB_DISABLED"] = "true"
+# os.environ["WANDB_DISABLED"] = "true"
 
 def train(args, model, train_features, dev_features, test_features):
     def finetune(features, optimizer, num_epoch, num_steps):
@@ -47,10 +47,10 @@ def train(args, model, train_features, dev_features, test_features):
                     scheduler.step()
                     model.zero_grad()
                     num_steps += 1
-                wandb.log({"loss": loss.item()}, step=num_steps)
+                # wandb.log({"loss": loss.item()}, step=num_steps)
                 if (step + 1) == len(train_dataloader) - 1 or (args.evaluation_steps > 0 and num_steps % args.evaluation_steps == 0 and step % args.gradient_accumulation_steps == 0):
                     dev_score, dev_output = evaluate(args, model, dev_features, tag="dev")
-                    wandb.log(dev_output, step=num_steps)
+                    # wandb.log(dev_output, step=num_steps)
                     print(dev_output)
                     if dev_score > best_score:
                         best_score = dev_score
@@ -176,7 +176,7 @@ def main():
                         help="Number of relation types in dataset.")
 
     args = parser.parse_args()
-    wandb.init(project="DocRED")
+    # wandb.init(project="DocRED")
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     args.n_gpu = torch.cuda.device_count()
