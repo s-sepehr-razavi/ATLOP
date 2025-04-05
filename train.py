@@ -14,7 +14,7 @@ from utils import set_seed, collate_fn
 from prepro import read_docred
 from evaluation import to_official, official_evaluate
 import wandb
-
+os.environ["WANDB_DISABLED"] = "true"
 
 def train(args, model, train_features, dev_features, test_features):
     def finetune(features, optimizer, num_epoch, num_steps):
