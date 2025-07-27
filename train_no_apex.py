@@ -271,7 +271,7 @@ def main():
     )
 
     args = parser.parse_args()
-    wandb.init(project="DocRED")
+    # wandb.init(project="DocRED")
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     args.n_gpu = torch.cuda.device_count()
