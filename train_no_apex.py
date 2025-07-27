@@ -13,7 +13,7 @@ from model import DocREModel
 from utils import set_seed, collate_fn
 from prepro import read_docred
 from evaluation import to_official, official_evaluate
-import wandb
+# import wandb
 
 
 def train(args, model, train_features, dev_features, test_features):
@@ -69,7 +69,7 @@ def train(args, model, train_features, dev_features, test_features):
                     model.zero_grad()
                     num_steps += 1
 
-                wandb.log({"loss": loss.item()}, step=num_steps)
+                # wandb.log({"loss": loss.item()}, step=num_steps)
 
                 if (
                     (step + 1) == len(train_dataloader) - 1
@@ -82,7 +82,7 @@ def train(args, model, train_features, dev_features, test_features):
                     dev_score, dev_output = evaluate(
                         args, model, dev_features, tag="dev"
                     )
-                    wandb.log(dev_output, step=num_steps)
+                    # wandb.log(dev_output, step=num_steps)
                     print(dev_output)
                     if dev_score > best_score:
                         best_score = dev_score
