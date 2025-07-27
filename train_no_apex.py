@@ -7,7 +7,8 @@ from torch.cuda.amp import autocast, GradScaler
 import ujson as json
 from torch.utils.data import DataLoader
 from transformers import AutoConfig, AutoModel, AutoTokenizer
-from transformers.optimization import AdamW, get_linear_schedule_with_warmup
+from torch.optim import AdamW
+from transformers import get_linear_schedule_with_warmup
 from model import DocREModel
 from utils import set_seed, collate_fn
 from prepro import read_docred
@@ -240,6 +241,10 @@ def main():
     parser.add_argument(
         "--gradient_accumulation_steps", default=1, type=int
     )
+
+    parser.add_argument("--num_labels", default=4, type=int,
+                  help="Max number of labels in prediction.")
+
     parser.add_argument(
         "--learning_rate", default=5e-5, type=float
     )
