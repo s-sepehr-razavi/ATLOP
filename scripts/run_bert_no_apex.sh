@@ -1,4 +1,4 @@
-python train.py --data_dir ./dataset/docred \
+python train_no_apex.py --data_dir ./dataset/docred \
 --transformer_type bert \
 --model_name_or_path bert-large-uncased \
 --train_file train_annotated.json \
